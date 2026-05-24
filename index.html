@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>memtibas | Official</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; visibility: hidden; }
+    }
+    
+    .fade-out { animation: fadeOut 0.8s ease-in-out forwards; }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 106, 31, 0.08);
+      border-color: rgba(255, 106, 31, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -10px rgba(255, 106, 31, 0.3);
+    }
+
+    .logo-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 24px;
+    }
+    .logo-glow {
+      position: absolute;
+      inset: -5px;
+      background: linear-gradient(135deg, #ff6a1f, #ff2d55);
+      border-radius: 50%;
+      filter: blur(15px);
+      opacity: 0.6;
+    }
+    .logo-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-[#050505] text-white flex items-center justify-center p-4 overflow-x-hidden">
+
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-[#ff6a1f]/10 blur-[120px]"></div>
+    <div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-[#ff2d55]/10 blur-[120px]"></div>
+  </div>
+
+  <div id="overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black cursor-pointer group">
+    <div class="text-center">
+      <div class="logo-container">
+        <div class="logo-glow group-hover:opacity-100 transition duration-500"></div>
+        <img src="https://i.hizliresim.com/9r0ctm1.jpeg" alt="Logo" class="logo-img">
+      </div>
+      <h2 class="text-4xl font-black tracking-tighter mb-2 italic">MEMTIBAS</h2>
+      <p class="text-white/40 uppercase tracking-[0.3em] text-[10px]">Devam etmek için tıkla</p>
+    </div>
+  </div>
+
+  <main id="mainContent" class="relative z-10 w-full max-w-3xl opacity-0 translate-y-4 transition-all duration-1000">
+    
+    <div class="text-center mb-10">
+      <img src="https://i.hizliresim.com/9r0ctm1.jpeg" alt="Logo" class="w-24 h-24 rounded-full mx-auto mb-6 border-2 border-[#ff6a1f]/30 shadow-2xl">
+      <h1 class="text-6xl font-black tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+        memtibas
+      </h1>
+      <div class="flex items-center justify-center gap-2">
+        <span class="h-px w-8 bg-[#ff6a1f]"></span>
+        <p class="text-[#ff6a1f] font-bold uppercase tracking-widest text-xs">Full-Time Streamer & Competitor</p>
+        <span class="h-px w-8 bg-[#ff6a1f]"></span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      
+      <a href="https://youtube.com/@memtibass" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3">
+        <div class="p-3 bg-white/5 rounded-2xl text-red-500">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.75 15.02v-6l5.2 3-5.2 3z"/></svg>
+        </div>
+        <span class="font-bold text-sm">YouTube</span>
+      </a>
+
+      <a href="https://kick.com/memtibas" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3 border-b-2 border-b-[#53FC18]/20">
+        <div class="p-3 bg-[#53FC18]/10 rounded-2xl text-[#53FC18]">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 256 256"><path d="M32 32h80v80l48-80h64v192h-80v-80l-48 80H32z"/></svg>
+        </div>
+        <span class="font-bold text-sm">Kick</span>
+      </a>
+
+      <a href="https://instagram.com/memtiibas" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3">
+        <div class="p-3 bg-white/5 rounded-2xl text-pink-500">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </div>
+        <span class="font-bold text-sm">Instagram</span>
+      </a>
+
+      <a href="https://www.onsrashop.com/kayit-ol?reference=memtibas" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3">
+        <div class="p-3 bg-white/5 rounded-2xl text-[#ff6a1f]">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        </div>
+        <span class="font-bold text-sm text-center">Onsra Shop</span>
+      </a>
+
+    </div>
+
+    <div class="glass-card p-8 rounded-[2rem] border-white/5">
+        <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white/90">
+            <span class="w-2 h-2 rounded-full bg-[#ff6a1f]"></span>
+            Yayın Akışı
+        </h3>
+        <p class="text-white/60 leading-relaxed text-sm">
+            FPS dünyasına dair her şey burada. Üst düzey gameplay, stratejik hamleler ve kesintisiz aksiyon için doğru adrestesin. Valorant ve CS sahnelerindeki en taze içerikleri kaçırmamak için sosyal medya hesaplarımı takip edebilirsin.
+        </p>
+    </div>
+
+    <footer class="mt-12 text-center">
+      <p class="text-[10px] text-white/20 uppercase tracking-[0.4em]">&copy; 2025 memtibas</p>
+    </footer>
+
+  </main>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const main = document.getElementById('mainContent');
+
+    overlay.onclick = () => {
+      overlay.classList.add('fade-out');
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        main.classList.remove('opacity-0', 'translate-y-4');
+        main.classList.add('opacity-100', 'translate-y-0');
+      }, 700);
+    };
+  </script>
+
+</body>
+</html>
