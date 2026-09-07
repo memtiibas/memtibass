@@ -2,153 +2,324 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>memtibas | Official</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>memtibas | Official Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    
+    * { -webkit-tap-highlight-color: transparent; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: #0a0a0a;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    /* ==== KURTLAR VADİSİ VIBE ANİMASYONLAR ==== */
     @keyframes fadeOut {
       from { opacity: 1; }
       to { opacity: 0; visibility: hidden; }
     }
-    
-    .fade-out { animation: fadeOut 0.8s ease-in-out forwards; }
+    .fade-out { animation: fadeOut 0.6s ease-in-out forwards; }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+
+    @keyframes smokeEffect {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      25% { transform: translate(20px, -15px) scale(1.1); opacity: 0.5; }
+      50% { transform: translate(-15px, 10px) scale(0.95); opacity: 0.4; }
+      75% { transform: translate(10px, 20px) scale(1.05); opacity: 0.6; }
+    }
+    .animate-smoke { animation: smokeEffect 15s ease-in-out infinite; }
+
+    @keyframes wolfEyes {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+    }
+    .animate-wolf-eyes { animation: wolfEyes 3s ease-in-out infinite; }
+
+    @keyframes mematiGlow {
+      0%, 100% { text-shadow: 0 0 20px rgba(255, 150, 0, 0.4), 0 0 40px rgba(255, 100, 0, 0.2); }
+      50% { text-shadow: 0 0 30px rgba(255, 180, 0, 0.8), 0 0 60px rgba(255, 120, 0, 0.4); }
+    }
+    .animate-memati { animation: mematiGlow 4s ease-in-out infinite; }
+
+    /* ==== GENÇ MODERN CAM EFEKTİ ==== */
     .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .glass-card:hover {
-      background: rgba(255, 106, 31, 0.08);
-      border-color: rgba(255, 106, 31, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px -10px rgba(255, 106, 31, 0.3);
-    }
-
-    .logo-container {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 24px;
+      overflow: hidden;
     }
-    .logo-glow {
+    .glass-card::before {
+      content: '';
       position: absolute;
-      inset: -5px;
-      background: linear-gradient(135deg, #ff6a1f, #ff2d55);
-      border-radius: 50%;
-      filter: blur(15px);
-      opacity: 0.6;
-    }
-    .logo-img {
-      position: relative;
+      top: 0;
+      left: -100%;
       width: 100%;
       height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.1);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      transition: left 0.5s;
+    }
+    .glass-card:hover::before {
+      left: 100%;
+    }
+    .glass-card:hover {
+      border-color: rgba(255, 150, 0, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 150, 0, 0.1);
+    }
+
+    /* ==== YOUTUBE & INSTAGRAM VURGULU ==== */
+    .youtube-card {
+      border-left: 2px solid rgba(255, 0, 0, 0.4);
+    }
+    .instagram-card {
+      border-left: 2px solid rgba(255, 20, 147, 0.4);
+    }
+    .youtube-card:hover {
+      border-left: 2px solid rgba(255, 0, 0, 0.8);
+      background: linear-gradient(145deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.02));
+    }
+    .instagram-card:hover {
+      border-left: 2px solid rgba(255, 20, 147, 0.8);
+      background: linear-gradient(145deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.02));
+    }
+
+    /* ==== KURTLAR VADİSİ RENK PALETİ ==== */
+    .kv-color {
+      color: #ff8c00;
+    }
+    .kv-bg {
+      background: #ff8c00;
+    }
+    .kv-gradient {
+      background: linear-gradient(135deg, #ff8c00, #cc5500);
+    }
+    .kv-text-gradient {
+      background: linear-gradient(to right, #ff8c00, #ffb366, #ff8c00);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ==== GRİD DESEN ==== */
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(rgba(255, 140, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 140, 0, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+    }
+
+    /* ==== MEMATİ GÖNDERMESİ ==== */
+    .memati-reference {
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+    }
+    .wolf-icon {
+      filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
     }
   </style>
 </head>
 
-<body class="min-h-screen bg-[#050505] text-white flex items-center justify-center p-4 overflow-x-hidden">
+<body class="min-h-screen text-white flex items-center justify-center p-4 sm:p-6 relative no-scrollbar">
 
-  <div class="fixed inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-[#ff6a1f]/10 blur-[120px]"></div>
-    <div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-[#ff2d55]/10 blur-[120px]"></div>
+  <!-- ==== KURTLAR VADİSİ DUMAN EFEKTİ ==== -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-[20%] -left-[15%] w-[50%] h-[50%] rounded-full bg-[#ff8c00]/8 blur-[150px] animate-smoke"></div>
+    <div class="absolute -bottom-[20%] -right-[15%] w-[50%] h-[50%] rounded-full bg-[#cc5500]/8 blur-[150px] animate-smoke" style="animation-delay: 5s;"></div>
+    <div class="absolute top-[40%] left-[20%] w-[30%] h-[30%] rounded-full bg-[#ffb366]/5 blur-[100px] animate-smoke" style="animation-delay: 10s;"></div>
+    <div class="absolute inset-0 bg-grid-pattern"></div>
+    <!-- Kurt gözleri efekti -->
+    <div class="absolute top-[20%] right-[15%] w-4 h-4 bg-[#ff8c00] rounded-full opacity-30 animate-wolf-eyes"></div>
+    <div class="absolute top-[25%] right-[20%] w-3 h-3 bg-[#ff8c00] rounded-full opacity-30 animate-wolf-eyes" style="animation-delay: 1s;"></div>
   </div>
 
-  <div id="overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black cursor-pointer group">
-    <div class="text-center">
-      <div class="logo-container">
-        <div class="logo-glow group-hover:opacity-100 transition duration-500"></div>
-        <img src="https://i.hizliresim.com/9r0ctm1.jpeg" alt="Logo" class="logo-img">
+  <!-- ==== OVERLAY GİRİŞ ==== -->
+  <div id="overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black cursor-pointer transition-all duration-500">
+    <div class="text-center px-4">
+      <div class="relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 animate-float">
+        <img src="https://i.hizliresim.com/9r0ctm1.jpeg" alt="Logo" class="w-full h-full rounded-full object-cover border-2 border-[#ff8c00]/30 shadow-2xl wolf-icon">
       </div>
-      <h2 class="text-4xl font-black tracking-tighter mb-2 italic">MEMTIBAS</h2>
-      <p class="text-white/40 uppercase tracking-[0.3em] text-[10px]">Devam etmek için tıkla</p>
+      <h2 class="text-4xl sm:text-6xl font-black tracking-tighter mb-3 italic kv-text-gradient animate-memati">MEMTIBAS</h2>
+      <p class="text-white/40 uppercase tracking-[0.35em] text-[10px] sm:text-xs font-light group-hover:text-[#ff8c00] transition-colors duration-300">
+        <span class="inline-block animate-pulse kv-color">◈</span> Devam etmek için tıkla <span class="inline-block animate-pulse kv-color" style="animation-delay: 0.5s;">◈</span>
+      </p>
     </div>
   </div>
 
-  <main id="mainContent" class="relative z-10 w-full max-w-3xl opacity-0 translate-y-4 transition-all duration-1000">
+  <!-- ==== ANA İÇERİK ==== -->
+  <main id="mainContent" class="relative z-10 w-full max-w-3xl opacity-0 translate-y-8 transition-all duration-1000 ease-out">
     
-    <div class="text-center mb-10">
-      <img src="https://i.hizliresim.com/9r0ctm1.jpeg" alt="Logo" class="w-24 h-24 rounded-full mx-auto mb-6 border-2 border-[#ff6a1f]/30 shadow-2xl">
-      <h1 class="text-6xl font-black tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
-        memtibas
-      </h1>
-      <div class="flex items-center justify-center gap-2">
-        <span class="h-px w-8 bg-[#ff6a1f]"></span>
-        <p class="text-[#ff6a1f] font-bold uppercase tracking-widest text-xs">Full-Time Streamer & Competitor</p>
-        <span class="h-px w-8 bg-[#ff6a1f]"></span>
+    <!-- PROFİL BÖLÜMÜ -->
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 animate-float">
+        <img src="https://i.hizliresim.com/9r0ctm1.jpeg" alt="memtibas" class="w-full h-full rounded-full object-cover border-2 border-[#ff8c00]/30 shadow-2xl wolf-icon">
+        <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-[#ff8c00] rounded-full flex items-center justify-center text-[10px] font-bold text-black">⚡</div>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tighter mb-4 kv-text-gradient animate-memati">memtibas</h1>
+      <div class="flex items-center justify-center gap-3 sm:gap-4">
+        <span class="h-px w-8 sm:w-16 bg-gradient-to-r from-transparent to-[#ff8c00]"></span>
+        <p class="kv-color font-light uppercase tracking-[0.3em] text-[10px] sm:text-sm whitespace-nowrap">
+          Full-Time Streamer & Competitor
+        </p>
+        <span class="h-px w-8 sm:w-16 bg-gradient-to-l from-transparent to-[#ff8c00]"></span>
+      </div>
+      <p class="text-white/30 text-[10px] sm:text-xs mt-4 tracking-widest uppercase font-light memati-reference">"Kurtlar vadisinde yalnız gezerim" ⚡</p>
+    </div>
+
+    <!-- SOSYAL MEDYA GRİD -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 mb-8 sm:mb-10">
+      
+      <!-- YouTube - VURGULU -->
+      <a href="https://youtube.com/@memtibass" target="_blank" class="glass-card youtube-card p-5 sm:p-7 rounded-2xl flex flex-col items-center justify-center gap-3 sm:gap-4 group">
+        <div class="p-3 sm:p-4 bg-gradient-to-br from-red-500/20 to-red-500/5 rounded-xl text-red-500 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg" style="box-shadow: 0 0 15px rgba(255,0,0,0.2);">
+          <svg class="w-7 h-7 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.75 15.02v-6l5.2 3-5.2 3z"/></svg>
+        </div>
+        <span class="font-light text-[10px] sm:text-sm tracking-wider text-red-400">YOUTUBE</span>
+      </a>
+
+      <!-- Kick -->
+      <a href="https://kick.com/memtibas" target="_blank" class="glass-card p-5 sm:p-7 rounded-2xl flex flex-col items-center justify-center gap-3 sm:gap-4 group">
+        <div class="p-3 sm:p-4 bg-gradient-to-br from-[#53FC18]/20 to-[#53FC18]/5 rounded-xl text-[#53FC18] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-lg" style="box-shadow: 0 0 15px rgba(83,252,24,0.2);">
+          <svg class="w-7 h-7 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 256 256"><path d="M32 32h80v80l48-80h64v192h-80v-80l-48 80H32z"/></svg>
+        </div>
+        <span class="font-light text-[10px] sm:text-sm tracking-wider text-white/60">KICK</span>
+      </a>
+
+      <!-- Instagram - VURGULU -->
+      <a href="https://instagram.com/memtiibas" target="_blank" class="glass-card instagram-card p-5 sm:p-7 rounded-2xl flex flex-col items-center justify-center gap-3 sm:gap-4 group">
+        <div class="p-3 sm:p-4 bg-gradient-to-br from-pink-500/20 to-pink-500/5 rounded-xl text-pink-500 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg" style="box-shadow: 0 0 15px rgba(255,20,147,0.2);">
+          <svg class="w-7 h-7 sm:w-9 sm:h-9" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </div>
+        <span class="font-light text-[10px] sm:text-sm tracking-wider text-pink-400">INSTAGRAM</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://whatsapp.com/channel/0029VbAIJH8IyPtUuaLlkY28" target="_blank" class="glass-card p-5 sm:p-7 rounded-2xl flex flex-col items-center justify-center gap-3 sm:gap-4 group">
+        <div class="p-3 sm:p-4 bg-gradient-to-br from-[#25D366]/20 to-[#25D366]/5 rounded-xl text-[#25D366] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-lg" style="box-shadow: 0 0 15px rgba(37,211,102,0.2);">
+          <svg class="w-7 h-7 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <span class="font-light text-[10px] sm:text-sm tracking-wider text-white/60">WHATSAPP</span>
+      </a>
+    </div>
+
+    <!-- YAYIN AKIŞI KARTI -->
+    <div class="glass-card p-6 sm:p-8 rounded-2xl border-l-2 border-l-[#ff8c00]">
+      <div class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-[#ff8c00]/20 to-[#cc5500]/10 rounded-full blur-3xl opacity-60"></div>
+      <h3 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-3 text-white/95 relative z-10">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff8c00] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-gradient-to-r from-[#ff8c00] to-[#cc5500]"></span>
+        </span>
+        <span class="kv-text-gradient font-bold">Yayın Akışı & İçerik</span>
+      </h3>
+      <p class="text-white/60 leading-relaxed text-sm sm:text-base relative z-10 font-light">
+        FPS arenasında en güncel içerikler, taktiksel analizler ve turnuva performansları burada. 
+        Valorant ve CS2'de yüksek tempolu maçlar, stratejik hamleler ve izleyiciyle interaktif yayınlar için 
+        kanallarıma göz atmayı unutma. 🔥
+      </p>
+      <div class="flex flex-wrap gap-2 mt-6 relative z-10">
+        <span class="bg-[#ff8c00]/10 px-4 py-2 rounded-full text-xs font-light text-[#ff8c00] border border-[#ff8c00]/20 backdrop-blur-sm">#Valorant</span>
+        <span class="bg-white/5 px-4 py-2 rounded-full text-xs font-light text-white/50 border border-white/10 backdrop-blur-sm">#CS2</span>
+        <span class="bg-white/5 px-4 py-2 rounded-full text-xs font-light text-white/50 border border-white/10 backdrop-blur-sm">#Competitive</span>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-      
-      <a href="https://youtube.com/@memtibass" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3">
-        <div class="p-3 bg-white/5 rounded-2xl text-red-500">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.75 15.02v-6l5.2 3-5.2 3z"/></svg>
-        </div>
-        <span class="font-bold text-sm">YouTube</span>
-      </a>
-
-      <a href="https://kick.com/memtibas" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3 border-b-2 border-b-[#53FC18]/20">
-        <div class="p-3 bg-[#53FC18]/10 rounded-2xl text-[#53FC18]">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 256 256"><path d="M32 32h80v80l48-80h64v192h-80v-80l-48 80H32z"/></svg>
-        </div>
-        <span class="font-bold text-sm">Kick</span>
-      </a>
-
-      <a href="https://instagram.com/memtiibas" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3">
-        <div class="p-3 bg-white/5 rounded-2xl text-pink-500">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-        </div>
-        <span class="font-bold text-sm">Instagram</span>
-      </a>
-
-      <a href="https://www.onsrashop.com/kayit-ol?reference=memtibas" target="_blank" class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-3">
-        <div class="p-3 bg-white/5 rounded-2xl text-[#ff6a1f]">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-        </div>
-        <span class="font-bold text-sm text-center">Onsra Shop</span>
-      </a>
-
-    </div>
-
-    <div class="glass-card p-8 rounded-[2rem] border-white/5">
-        <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white/90">
-            <span class="w-2 h-2 rounded-full bg-[#ff6a1f]"></span>
-            Yayın Akışı
-        </h3>
-        <p class="text-white/60 leading-relaxed text-sm">
-            FPS dünyasına dair her şey burada. Üst düzey gameplay, stratejik hamleler ve kesintisiz aksiyon için doğru adrestesin. Valorant ve CS sahnelerindeki en taze içerikleri kaçırmamak için sosyal medya hesaplarımı takip edebilirsin.
-        </p>
-    </div>
-
-    <footer class="mt-12 text-center">
-      <p class="text-[10px] text-white/20 uppercase tracking-[0.4em]">&copy; 2025 memtibas</p>
+    <!-- FOOTER -->
+    <footer class="mt-10 sm:mt-12 text-center space-y-2">
+      <div class="flex items-center justify-center gap-3">
+        <span class="h-px w-12 bg-gradient-to-r from-transparent to-[#ff8c00]/30"></span>
+        <p class="text-[10px] sm:text-xs text-white/30 uppercase tracking-[0.3em] font-light memati-reference">© 2025 memtibas</p>
+        <span class="h-px w-12 bg-gradient-to-l from-transparent to-[#ff8c00]/30"></span>
+      </div>
+      <p class="text-[8px] sm:text-[10px] text-white/10 uppercase tracking-[0.5em] memati-reference">"Kurtlar vadisinde yalnız gezerim"</p>
     </footer>
 
   </main>
 
   <script>
-    const overlay = document.getElementById('overlay');
-    const main = document.getElementById('mainContent');
+    (function() {
+      const overlay = document.getElementById('overlay');
+      const main = document.getElementById('mainContent');
 
-    overlay.onclick = () => {
-      overlay.classList.add('fade-out');
-      setTimeout(() => {
-        overlay.style.display = 'none';
-        main.classList.remove('opacity-0', 'translate-y-4');
-        main.classList.add('opacity-100', 'translate-y-0');
-      }, 700);
-    };
+      // Overlay'e tıklanınca ana sayfa açılır
+      overlay.addEventListener('click', () => {
+        overlay.classList.add('fade-out');
+        
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          main.classList.remove('opacity-0', 'translate-y-8');
+          main.classList.add('opacity-100', 'translate-y-0');
+        }, 500);
+      });
+
+      // Mobil dokunma efektleri
+      const cards = document.querySelectorAll('.glass-card');
+      cards.forEach(card => {
+        card.addEventListener('touchstart', () => {
+          card.style.transform = 'translateY(-4px)';
+          card.style.borderColor = 'rgba(255, 140, 0, 0.4)';
+          card.style.background = 'rgba(255, 140, 0, 0.1)';
+          card.style.boxShadow = '0 12px 25px -8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 140, 0, 0.2)';
+          
+          setTimeout(() => {
+            card.style.transform = '';
+            card.style.borderColor = '';
+            card.style.background = '';
+            card.style.boxShadow = '';
+          }, 300);
+        }, { passive: true });
+      });
+
+      // Viewport height düzeltmesi
+      const setVH = () => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      };
+      window.addEventListener('resize', setVH);
+      window.addEventListener('orientationchange', setVH);
+      setVH();
+    })();
   </script>
 
+  <style>
+    /* ==== MOBİL UYUMLULUK ==== */
+    .min-h-screen {
+      min-height: 100vh;
+      min-height: calc(var(--vh, 1vh) * 100);
+    }
+    
+    /* Dokunmatik cihazlarda hover temizle */
+    @media (hover: none) {
+      .glass-card:hover {
+        transform: none;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+        border-color: rgba(255, 255, 255, 0.06);
+      }
+      .glass-card:hover::before {
+        left: -100%;
+      }
+    }
+    
+    /* Küçük ekranlar */
+    @media (max-width: 640px) {
+      .logo-wrapper, .relative.w-24.h-24 {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
 </body>
 </html>
